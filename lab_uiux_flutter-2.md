@@ -930,10 +930,10 @@ Add brief comments explaining each section.
 
 | คำถาม | คำตอบ |
 |-------|-------|
-| AI ใช้ Widget อะไรสร้าง Avatar? | _________________ |
-| AI handle กรณี avatarUrl เป็น null อย่างไร? | _________________ |
-| AI ใช้ color จาก Theme หรือ hardcode? | _________________ |
-| มีส่วนไหนที่ควรปรับปรุง? | _________________ |
+| AI ใช้ Widget อะไรสร้าง Avatar? | CircleAvatar |
+| AI handle กรณี avatarUrl เป็น null อย่างไร? | แสดงตัวอักษรย่อของชื่อ (Initials) แทนรูป |
+| AI ใช้ color จาก Theme หรือ hardcode? | ใช้จาก Theme (colorScheme) |
+| มีส่วนไหนที่ควรปรับปรุง? | ควรเพิ่ม Callback ภายนอกให้ปุ่ม onPressed ใช้งานได้จริง |
 
 **ขั้นตอนที่ 4.4: นำ Code ไปใช้ใน Project**
 
@@ -957,7 +957,12 @@ Add brief comments explaining each section.
 5. ดู Code และ Widget Tree ที่ได้ และเปรียบเทียบกับ  Code และ Widget tree ที่เขียนเองในการทดลองที่ 3
    
 ```text
-เขียนผลการเปรียบเทียบที่นี่
+ผลการเปรียบเทียบ Code และ Widget Tree เป็นดังนี้
+1. โครงสร้างไฟล์นั้น AI เขียนโค้ดทุกหน้ากระจุกรวมในไฟล์เดียว ส่วนการทดลองที่ 3 มีการแยกโฟลเดอร์ (screens, widgets) เป็นสัดส่วน ทำให้โค้ดสะอาดและนำไปใช้ซ้ำ (Reusable) ได้ดีกว่า
+2. ระบบ Theme นั้น AI กำหนดสีเองแบบ Hardcode แต่การทดลองที่ 3 ใช้ Material Theme Builder ซึ่งเป็นมาตรฐาน จัดการง่าย และรองรับ Light/Dark Mode อัตโนมัติ
+3. การจัดการหน้าต่าง (Navigation) นั้น AI สร้าง MainShell มาครอบแอปอีกที แต่การทดลองที่ 3 ฝัง BottomNavigationBar ไว้ในหน้า Home แล้วใช้ฟังก์ชันสลับ Widget ทำให้โค้ดตรงไปตรงมากว่า
+4. ความสมจริงของ UI นั้น AI สร้างการ์ดด้วย Container ธรรมดา แต่การทดลองที่ 3 ใช้ Card ร่วมกับ InkWell ทำให้ได้เอฟเฟกต์การกด (Ripple Effect) ตามมาตรฐาน Material 3
+5. การรับส่งข้อมูลนั้นหน้า Detail ของ AI พิมพ์ข้อความฝังลงไปตรงๆ (Hardcode) แต่ของการทดลองที่ 3 มีการส่งข้อมูลผ่าน Constructor ทำให้ข้อมูลเปลี่ยนตามรายการสินค้าที่กดได้จริง (Dynamic)
 
 ```
 ---
